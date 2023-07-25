@@ -1,3 +1,20 @@
+# In This Home Assignment We Have
+
+✅ Routing support with [React Routing](https://reactrouter.com/en/main)
+
+✅ Design with [Ant Design](https://ant.design/)
+
+✅ [Deployment to AWS S3](https://esh-blog.s3.eu-west-1.amazonaws.com/index.html)
+
+# Improvments that couldn't fit according to the time limitation
+
+💪 A real login mechanism
+
+💪 Modular calculator with children nodes that the developer could build the calculator with the figurs and operations he wants
+
+💪 Responsive view
+
+
 # vite-template-redux
 
 Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)

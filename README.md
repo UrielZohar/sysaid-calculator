@@ -10,7 +10,7 @@
 
 💪 A real login mechanism
 
-💪 Modular calculator with children nodes that the developer could build the calculator with the figurs and operations he wants
+💪 A Modular calculator with children nodes that the developer could build the calculator with the figures and operations he wants
 
 💪 Responsive view
 

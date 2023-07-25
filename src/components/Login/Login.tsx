@@ -1,14 +1,16 @@
-import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '../../app/hooks';
+import { setLoggedInUser } from './LoginSlice'; 
 import styles from './Login.module.css';
 
 
 const Login: React.FC = () => {
-
+  const dispatch = useAppDispatch();
   const navigate = useNavigate()
   
-  const onFinish = (values: any) => {
+  const onFinish = ({username}: any) => {
+    dispatch(setLoggedInUser(username));
     navigate('/calculator');
   };
   

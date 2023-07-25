@@ -1,0 +1,11 @@
+.loginFormWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    :global(.ant-form) {
+      border: 1px solid #1677FF;
+      padding: 25px;
+    }
+}

@@ -4,7 +4,7 @@ import styles from './Calculator.module.css';
 const formulaRegex = /^[-+]?\d+(\*[+-]?\d+|[+-]?\d+|%\d+|%[-+]?\d+)*$/;
 
 interface CalculatorProps {
-  onChange: (formula: string) => void;
+  onChange: (formula: string, lastChar: string) => void;
   onEqualPress: (formula: string) => void;
   formula: string;
 }
@@ -16,7 +16,7 @@ const Calculator: React.FC<CalculatorProps> = ({onChange, onEqualPress, formula}
   const isValid = (formula === '') || formulaRegex.test(formula);
 
   const handleOnChange = (e: any) => {
-    onChange(e.target.value);
+    onChange(e.target.value, e.nativeEvent.data);
   }
 
   const handleOnEqualPress = () => {
@@ -43,7 +43,7 @@ const Calculator: React.FC<CalculatorProps> = ({onChange, onEqualPress, formula}
             numbers.map(number => (
               <button
                 className={styles.calculatorButton}
-                onClick={() => onChange(`${formula}${number}`)} 
+                onClick={() => onChange(`${formula}${number}`, number.toString())} 
                 key={number}>
                 {number}
               </button>
@@ -54,7 +54,7 @@ const Calculator: React.FC<CalculatorProps> = ({onChange, onEqualPress, formula}
           {
             operators.map(operator => (
               <button
-                onClick={() => onChange(`${formula}${operator}`)} 
+                onClick={() => onChange(`${formula}${operator}`, operator)} 
                 className={styles.calculatorButton} 
                 key={operator}>
                 {operator}

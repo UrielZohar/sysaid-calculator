@@ -6,6 +6,7 @@ import { Button } from 'antd'
 import { useNavigate, Outlet } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from  '../../app/hooks'
 import { selectLoggedInUser, logout } from '../Login/LoginSlice'
+import { clearAll } from '../CalculatorManager/CalculatorManagerSlice'
 import styles from './Header.module.css'
 
 const Header = () => {
@@ -32,6 +33,7 @@ const Header = () => {
 
   const onLogout = () => {
     dispatch(logout());
+    dispatch(clearAll());
     navigate('/login')
   }
 

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Outlet   } from 'reac
 
 import { Header } from './components/Header/Header'
 import { Login } from './components/Login/Login'
-import { Calculator } from './components/Calculator/Calculator';
+import { CalculatorManager } from './components/CalculatorManager/CalculatorManager';
 function App() {
   return (
     <Router>
@@ -10,7 +10,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/' element={<Header />}>
           <Route path="/history" element={<h1>History</h1>} />
-          <Route path="/calculator" element={<Calculator />} />
+          <Route path="/calculator" element={<CalculatorManager />} />
           <Route path="/" element={<Navigate to='/login' replace />} />
         </Route>
         <Route path="*" element={<Navigate to='/login' replace />} />

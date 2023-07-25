@@ -3,13 +3,14 @@
 }
 
 .formulaInput {
-  :global(.ant-form-item) {
-    margin-bottom: 5px;
-  }
+  width: 293px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 
-  :global(.ant-form-item-explain-error) {
-    display: none;
-  }
+.formulaInputInvalid {
+  background: hsla(0, 90%, 70%, 1);
 }
 
 .buttonsArea {

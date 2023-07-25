@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { Form, Input } from "antd";
+import { handleKeyPress } from './Calculator.utils';
 import styles from './Calculator.module.css';
 
 const formulaRegex = /^[-+]?\d+(\*[+-]?\d+|[+-]?\d+|%\d+|%[-+]?\d+)*$/;
@@ -13,69 +12,62 @@ interface CalculatorProps {
 
 const Calculator: React.FC<CalculatorProps> = ({onChange, onEqualPress, formula}) => {
   const operators = ['+', '-', '*'];
-  const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const [form] = Form.useForm();
+  const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
+  const isValid = (formula === '') || formulaRegex.test(formula);
 
   const handleOnChange = (e: any) => {
     onChange(e.target.value);
   }
 
-  useEffect(() => {
-    document.querySelector('#calculator_formula')?.addEventListener('keydown', (e: any) => {
-      console.log(e.key);
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        onEqualPress(e.target.value);
-      }
-      if (e.key === 'Backspace') {
-        return;
-      }
-      if (!`${e.key}`.match(/^[0-9-+%\*]$/)) {
-        e.preventDefault();
-        return;
-      }
-    });
-  }, []);
+  const handleOnEqualPress = () => {
+    if (!isValid || formula === '') {
+      return;
+    }
+    const result = eval(formula);
+    onEqualPress(result);
+  }
 
   return (
     <div className={styles.calculator}>
       <div className={styles.formulaInput}>
-        <Form
-          form={form}
-          name="calculator"
-          onChange={handleOnChange}
-        >
-          <Form.Item
-            name="formula"
-            label=""
-            value={formula}
-            hasFeedback
-            rules={[
-              {
-                pattern: formulaRegex,
-                message: "Format is wrong"
-              }
-            ]}
-          >
-            <Input />
-          </Form.Item>
-        </Form>
+        <input
+          className={`${styles.formulaInput} ${!isValid ? styles.formulaInputInvalid: ''}`} 
+          value={formula} 
+          onChange={handleOnChange} 
+          onKeyDown={(e) => handleKeyPress(e, handleOnEqualPress, formula)} 
+        />
       </div>
       <div className={styles.buttonsArea}>
         <div className={styles.numbers}>
           {
             numbers.map(number => (
-              <button className={styles.calculatorButton} key={number}>{number}</button>
+              <button
+                className={styles.calculatorButton}
+                onClick={() => onChange(`${formula}${number}`)} 
+                key={number}>
+                {number}
+              </button>
             ))
           }
         </div>
         <div className={styles.operators}>
           {
             operators.map(operator => (
-              <button className={styles.calculatorButton} key={operator}>{operator}</button>
+              <button
+                onClick={() => onChange(`${formula}${operator}`)} 
+                className={styles.calculatorButton} 
+                key={operator}>
+                {operator}
+              </button>
             ))
           }
-          <button className={styles.calculatorButton} key='='>=</button>
+          <button 
+            className={styles.calculatorButton}
+            onClick={handleOnEqualPress} 
+            key='='
+            disabled={!isValid}>
+            =
+          </button>
         </div>
       </div>
     </div>

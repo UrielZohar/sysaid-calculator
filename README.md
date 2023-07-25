@@ -4,7 +4,12 @@
 
 ✅ Design with [Ant Design](https://ant.design/)
 
-✅ [Deployment to AWS S3](https://esh-blog.s3.eu-west-1.amazonaws.com/index.html)
+✅ [Deployment to AWS S3](https://sysaid-calculator.s3.eu-west-1.amazonaws.com/index.html)
+
+✅ React with TypeScript
+
+✅ Redux Toolkit
+
 
 # Improvments that couldn't fit according to the time limitation
 
